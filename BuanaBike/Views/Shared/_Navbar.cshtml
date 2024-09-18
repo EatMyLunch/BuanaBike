@@ -1,0 +1,30 @@
+﻿@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Buana Bike</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link @(currentController == "Contact" ? "active" : "")" asp-controller="Contact" asp-action="Index">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @(currentController == "Gallery" ? "active" : "")" asp-controller="Gallery" asp-action="Index">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @(currentController == "Article" ? "active" : "")" asp-controller="Article" asp-action="Index">Article</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link @(currentController == "Product" ? "active" : "")" asp-controller="Product" asp-action="Index">Product</a>
+                </li>
+            </ul>
+            <partial name="_LoginPartial" />
+        </div>
+    </div>
+</nav>

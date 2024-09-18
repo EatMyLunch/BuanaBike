@@ -1,0 +1,17 @@
+﻿@model Article
+
+@{
+    ViewData["Title"] = Model.Header;
+}
+
+<div class="row">
+    <div class="col-lg-8">
+        <h1 class="mb-4">@Model.Header</h1>
+        <img src="@Model.Url" class="img-fluid mb-4" alt="@Model.Header">
+        <p class="text-muted">Published on @Model.PublishDate.ToString("MMMM dd, yyyy")</p>
+        <div class="mb-4">
+            @Html.Raw(Model.Description)
+        </div>
+        <a asp-action="Index" class="btn btn-secondary">Back to Articles</a>
+    </div>
+</div>

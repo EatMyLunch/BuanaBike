@@ -1,0 +1,24 @@
+﻿@model List<Article>
+
+@{
+    ViewData["Title"] = "Articles";
+}
+
+<h1 class="mb-4">Articles</h1>
+
+<div class="row">
+    @foreach (var article in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img src="@article.Url" class="card-img-top" alt="@article.Header">
+                <div class="card-body">
+                    <h5 class="card-title">@article.Header</h5>
+                    <p class="card-text">@article.ShortDescription</p>
+                    <p class="card-text"><small class="text-muted">Published on @article.PublishDate.ToString("MMMM dd, yyyy")</small></p>
+                    <a asp-action="Details" asp-route-id="@article.Id" class="btn btn-primary">Show More</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,23 @@
+﻿@model List<Gallery>
+
+@{
+    ViewData["Title"] = "Gallery";
+}
+
+<h1 class="display-4 text-center mb-5">@ViewData["Title"]</h1>
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <img src="@item.Url" class="card-img-top" alt="@item.Title">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text"><small class="text-muted">Uploaded on @item.DateCreated.ToString("MMMM dd, yyyy")</small></p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

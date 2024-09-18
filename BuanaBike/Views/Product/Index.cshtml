@@ -1,0 +1,99 @@
+﻿@model List<Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">Products</h1>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <img src="@item.Url" class="card-img-top" alt="@item.Title">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Title</h5>
+                        <p class="card-text">@item.ShortDescription</p>
+                        <p class="card-text">Price: $@item.Price</p>
+                        <button class="btn btn-primary buy-btn" data-id="@item.Id" data-price="@item.Price">Buy</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="buyModal" tabindex="-1" aria-labelledby="buyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="buyModalLabel">Buy Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="buyForm">
+                    <input type="hidden" id="productId" name="productId">
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" min="1" value="1">
+                    </div>
+                    <p>Total Price: $<span id="totalPrice"></span></p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="confirmBuy">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.buy-btn').click(function () {
+                var productId = $(this).data('id');
+                var price = $(this).data('price');
+                $('#productId').val(productId);
+                updateTotalPrice(price);
+                $('#buyModal').modal('show');
+            });
+
+            $('#quantity').change(function () {
+                var price = $('.buy-btn[data-id="' + $('#productId').val() + '"]').data('price');
+                updateTotalPrice(price);
+            });
+
+            function updateTotalPrice(price) {
+                var quantity = $('#quantity').val();
+                var totalPrice = price * quantity;
+                $('#totalPrice').text(totalPrice);
+            }
+
+            $('#confirmBuy').click(function () {
+                var productId = $('#productId').val();
+                var quantity = $('#quantity').val();
+
+                $.ajax({
+                    url: '@Url.Action("AddRecord", "Product")',
+                    type: 'POST',
+                    data: { productId: productId, quantity: quantity },
+                    success: function (result) {
+                        if (result.success) {
+                            alert('Purchase successful!');
+                            $('#buyModal').modal('hide');
+                        } else {
+                            alert('Error: ' + result.message);
+                        }
+                    },
+                    error: function () {
+                        alert('An error occurred while processing your request.');
+                    }
+                });
+            });
+        });
+    </script>
+}

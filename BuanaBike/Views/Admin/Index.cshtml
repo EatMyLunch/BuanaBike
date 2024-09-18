@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<!-- Records Section -->
+<h3 class="mb-3">Records</h3>
+<div class="row mb-5">
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+                <i class="bi bi-clipboard-data fs-1 text-primary mb-3"></i>
+                <h5 class="card-title">Product Records</h5>
+                <p class="card-text">Manage and view product purchase records.</p>
+                <a asp-controller="ProductRecords" asp-action="Index" class="btn btn-primary">View Records</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content Management Section -->
+<h3 class="mb-3">Content Management</h3>
+<div class="row">
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+                <i class="bi bi-box-seam fs-1 text-success mb-3"></i>
+                <h5 class="card-title">Products</h5>
+                <p class="card-text">Manage product listings and details.</p>
+                <a asp-controller="Products" asp-action="Index" class="btn btn-success">Manage Products</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+                <i class="bi bi-file-earmark-text fs-1 text-info mb-3"></i>
+                <h5 class="card-title">Articles</h5>
+                <p class="card-text">Create and edit articles and news.</p>
+                <a asp-controller="Articles" asp-action="Index" class="btn btn-info">Manage Articles</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+                <i class="bi bi-images fs-1 text-warning mb-3"></i>
+                <h5 class="card-title">Galleries</h5>
+                <p class="card-text">Upload and organize gallery images.</p>
+                <a asp-controller="Galleries" asp-action="Index" class="btn btn-warning">Manage Galleries</a>
+            </div>
+        </div>
+    </div>
+</div>
