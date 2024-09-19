@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BuanaBike")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+145b31b60611df4f584b58f61a76ade4029b001b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2976de1f82e4f8842c575285278497e1cb04f3b3")]
 [assembly: System.Reflection.AssemblyProductAttribute("BuanaBike")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BuanaBike")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
